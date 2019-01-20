@@ -3,6 +3,24 @@ const petRouter = express.Router();
 
 const petService = require('../services/pet');
 
+/**
+ * @typedef Pet
+ * @property {integer} id
+ * @property {string} name.required - Pet Name 
+ * @property {string} type.required - Pet Type
+ * @property {integer} owner.required - Pet Owner Id
+ * @property {integer} age.required - Pet Age
+ */
+
+
+/**
+ * This function comment is parsed by doctrine
+ * @route POST /pets
+ * @group Pet - Operations about pets
+ * @param {number} id.param.required - pet id - eg: user@domain
+ * @returns {object} 200 - id of created resource 
+ * @returns {Error}  default - Unexpected error
+ */
 petRouter.post('/', (req, res) => {
     const {age, name, owner, type} = req.body;
     petService.create(age, name, owner, type)
@@ -19,6 +37,14 @@ petRouter.post('/', (req, res) => {
         })
 });
 
+/**
+ * This function comment is parsed by doctrine
+ * @route GET /pets/:id
+ * @group Pet - Operations about pets
+ * @param {number} pet id - eg: 5
+ * @returns {Pet.model} 200 - id of created resource 
+ * @returns {Error}  default - Unexpected error
+ */
 petRouter.get('/:id', (req, res) => {
     const {id} = req.params;
     petService.read(id).then(data => {

@@ -2,6 +2,8 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const port = 3000;
+const expressSwagger = require('express-swagger-generator')(app);
+const {options} = require('./apiDocs');
 
 const userRouter = require('./routes/user');
 const petRouter = require('./routes/pet');
@@ -21,6 +23,7 @@ app.use('/pets', petRouter);
 // PUT - UPDATE PET
 // DELETE - DELETE PET
 
+expressSwagger(options)
 app.listen(port, () => {
   console.log('Petpedia is running on Port: '+port);
 });
