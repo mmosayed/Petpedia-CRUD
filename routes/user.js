@@ -42,6 +42,7 @@ userRouter.put('/:id', (req, res) => {
     })
 });
 
+
 // DELETE - DELETE USER
 userRouter.delete('/:id', (req, res) => {
   const {id} = req.params;

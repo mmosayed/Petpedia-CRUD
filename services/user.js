@@ -1,5 +1,4 @@
-const pgp = require('pg-promise')({});
-const db = pgp('postgres://localhost/petpedia');
+const {db} = require('./dbConnect')
 
 const UserService = {};
 

@@ -4,15 +4,17 @@ const app = express();
 const port = 3000;
 
 const userRouter = require('./routes/user');
+const petRouter = require('./routes/pet');
 
 // MIDDLEWARE NEEDED
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+//app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
 // user routes
 app.use('/users', userRouter);
+app.use('/pets', petRouter);
 
 // POST - CREATE PET
 // GET - READ PET
